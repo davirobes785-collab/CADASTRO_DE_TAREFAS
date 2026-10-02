@@ -1,11 +1,9 @@
-// Elementos do DOM
 const botaoTema = document.getElementById('botao-tema');
 const campoTarefa = document.getElementById('campo-tarefa');
 const botaoAdicionar = document.getElementById('botao-adicionar');
 const listaTarefas = document.getElementById('lista-tarefas');
 const contadorTarefas = document.getElementById('contador-tarefas');
 
-// Estado da aplicação
 let tarefas = [];
 
 try {
@@ -15,14 +13,12 @@ try {
     tarefas = [];
 }
 
-// Inicialização
 document.addEventListener('DOMContentLoaded', () => {
     carregarTema();
     renderizarTarefas();
     configurarEventos();
 });
 
-// Configuração de Event Listeners globais
 function configurarEventos() {
     botaoTema.addEventListener('click', alternarTema);
     botaoAdicionar.addEventListener('click', adicionarTarefa);
@@ -33,7 +29,6 @@ function configurarEventos() {
         }
     });
 
-    // Delegação de Eventos na lista para melhor performance
     listaTarefas.addEventListener('click', (e) => {
         const botaoAcao = e.target.closest('.botao-acao');
         if (!botaoAcao) return;
@@ -51,7 +46,6 @@ function configurarEventos() {
     });
 }
 
-// Lógica de Tema (Claro / Escuro)
 function alternarTema() {
     const eModoEscuro = document.body.classList.toggle('modo-escuro');
     
@@ -79,7 +73,6 @@ function atualizarIconeTema(eModoEscuro) {
     }
 }
 
-// Operações de Tarefas
 function adicionarTarefa() {
     const textoTarefa = campoTarefa.value.trim();
 
@@ -123,7 +116,6 @@ function salvarERenderizar() {
     renderizarTarefas();
 }
 
-// Renderização do DOM
 function renderizarTarefas() {
     listaTarefas.innerHTML = '';
 
@@ -172,7 +164,6 @@ function atualizarContador() {
     }
 }
 
-// Função auxiliar para evitar XSS ao inserir texto do usuário no HTML
 function escapeHtml(texto) {
     const div = document.createElement('div');
     div.textContent = texto;
