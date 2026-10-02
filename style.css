@@ -1,62 +1,130 @@
 @import url('https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700&display=swap');
 
+/* --- ANIMAÇÕES KEYFRAMES --- */
+@keyframes entradaSuave {
+    from {
+        opacity: 0;
+        transform: translateY(16px) scale(0.98);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0) scale(1);
+    }
+}
+
+@keyframes surgirItem {
+    0% {
+        opacity: 0;
+        transform: translateX(-12px) scale(0.96);
+    }
+    100% {
+        opacity: 1;
+        transform: translateX(0) scale(1);
+    }
+}
+
+@keyframes pulsoBrilho {
+    0% {
+        box-shadow: 0 0 0 0 rgba(124, 58, 237, 0.4);
+    }
+    70% {
+        box-shadow: 0 0 0 10px rgba(124, 58, 237, 0);
+    }
+    100% {
+        box-shadow: 0 0 0 0 rgba(124, 58, 237, 0);
+    }
+}
+
+@keyframes pulsoBrilhoDark {
+    0% {
+        box-shadow: 0 0 0 0 rgba(6, 182, 212, 0.4);
+    }
+    70% {
+        box-shadow: 0 0 0 10px rgba(6, 182, 212, 0);
+    }
+    100% {
+        box-shadow: 0 0 0 0 rgba(6, 182, 212, 0);
+    }
+}
+
+@keyframes popEstatistica {
+    0% {
+        transform: scale(1);
+    }
+    50% {
+        transform: scale(1.08);
+    }
+    100% {
+        transform: scale(1);
+    }
+}
+
+/* --- VARIÁVEIS --- */
 :root {
     --fonte-principal: 'Plus Jakarta Sans', -apple-system, BlinkMacSystemFont, sans-serif;
     
-    /* Cores Light */
-    --cor-fundo: #f1f5f9;
-    --fundo-gradiente: linear-gradient(135deg, #e0e7ff 0%, #f1f5f9 50%, #e2e8f0 100%);
-    --fundo-cartao: rgba(255, 255, 255, 0.85);
+    /* Paleta Modo Claro: Azul Escuro & Azul Cobalto Forte */
+    --cor-fundo: #e0e8f5;
+    --fundo-gradiente: linear-gradient(135deg, #d4e0f0 0%, #eef4fb 50%, #cce0f5 100%);
+    --fundo-cartao: rgba(255, 255, 255, 0.94);
     --fundo-item: #ffffff;
-    --fundo-input: #f8fafc;
+    --fundo-input: #f0f4f9;
     
-    --cor-texto-principal: #0f172a;
-    --cor-texto-secundario: #64748b;
-    --cor-concluido: #94a3b8;
+    --cor-texto-principal: #0b132b;
+    --cor-texto-secundario: #1c2541;
+    --cor-concluido: #8d99ae;
     
-    --cor-primaria: #6366f1;
-    --cor-primaria-gradiente: linear-gradient(135deg, #6366f1 0%, #4f46e5 100%);
-    --cor-primaria-hover: #4f46e5;
-    --cor-primaria-foco: rgba(99, 102, 241, 0.2);
+    /* Destaque Azul Cobalto Forte */
+    --cor-primaria: #0044ff;
+    --cor-primaria-gradiente: linear-gradient(135deg, #0b132b 0%, #0044ff 100%);
+    --cor-primaria-hover: #0033cc;
+    --cor-primaria-foco: rgba(0, 68, 255, 0.28);
     
-    --cor-borda: rgba(226, 232, 240, 0.8);
-    --cor-borda-suave: #f1f5f9;
+    --cor-borda: rgba(0, 68, 255, 0.2);
+    --cor-borda-suave: #e2e8f0;
     
-    --cor-sucesso: #10b981;
-    --cor-perigo: #ef4444;
-    --cor-favorito: #f59e0b;
-    --cor-fixado: #6366f1;
+    /* Estados de Ação */
+    --cor-sucesso: #059669;
+    --cor-perigo: #dc2626;
+    --cor-favorito: #d97706;
+    --cor-fixado: #0044ff;
     
-    --sombra-cartao: 0 20px 40px -15px rgba(0, 0, 0, 0.07), 0 0 15px rgba(0, 0, 0, 0.03);
-    --sombra-item: 0 4px 6px -1px rgba(0, 0, 0, 0.03);
+    --sombra-cartao: 0 20px 40px -15px rgba(11, 19, 43, 0.2), 0 0 20px rgba(0, 68, 255, 0.12);
+    --sombra-item: 0 4px 10px rgba(11, 19, 43, 0.05);
     --sombra-foco: 0 0 0 4px var(--cor-primaria-foco);
     
     --raio-borda: 24px;
     --raio-borda-sm: 12px;
-    --transicao: all 0.25s cubic-bezier(0.4, 0, 0.2, 1);
+    --transicao: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
 }
 
 body.modo-escuro {
-    --cor-fundo: #090d16;
-    --fundo-gradiente: linear-gradient(135deg, #0f172a 0%, #090d16 100%);
-    --fundo-cartao: rgba(30, 41, 59, 0.75);
-    --fundo-item: #1e293b;
-    --fundo-input: #0f172a;
+    /* Paleta Dark */
+    --cor-fundo: #0b0f19;
+    --fundo-gradiente: linear-gradient(135deg, #111827 0%, #0b0f19 60%, #0284c7 180%);
+    --fundo-cartao: rgba(17, 24, 39, 0.85);
+    --fundo-item: #1f2937;
+    --fundo-input: #111827;
     
-    --cor-texto-principal: #f8fafc;
-    --cor-texto-secundario: #94a3b8;
-    --cor-concluido: #64748b;
+    --cor-texto-principal: #f9fafb;
+    --cor-texto-secundario: #9ca3af;
+    --cor-concluido: #6b7280;
     
-    --cor-primaria: #818cf8;
-    --cor-primaria-gradiente: linear-gradient(135deg, #818cf8 0%, #6366f1 100%);
-    --cor-primaria-hover: #6366f1;
-    --cor-primaria-foco: rgba(129, 140, 248, 0.25);
+    --cor-primaria: #06b6d4;
+    --cor-primaria-gradiente: linear-gradient(135deg, #06b6d4 0%, #0891b2 100%);
+    --cor-primaria-hover: #0891b2;
+    --cor-primaria-foco: rgba(6, 182, 212, 0.25);
     
-    --cor-borda: rgba(51, 65, 85, 0.6);
-    --cor-borda-suave: rgba(30, 41, 59, 0.5);
+    --cor-borda: rgba(55, 65, 81, 0.7);
+    --cor-borda-suave: rgba(31, 41, 55, 0.6);
     
-    --sombra-cartao: 0 25px 50px -12px rgba(0, 0, 0, 0.5);
-    --sombra-item: 0 4px 12px rgba(0, 0, 0, 0.2);
+    --cor-sucesso: #10b981;
+    --cor-perigo: #f87171;
+    --cor-favorito: #fbbf24;
+    --cor-fixado: #06b6d4;
+    
+    --sombra-cartao: 0 25px 50px -12px rgba(0, 0, 0, 0.7);
+    --sombra-item: 0 4px 12px rgba(0, 0, 0, 0.3);
 }
 
 *, *::before, *::after {
@@ -77,7 +145,8 @@ body {
     padding: 24px;
     line-height: 1.5;
     -webkit-font-smoothing: antialiased;
-    transition: background 0.4s ease, color 0.4s ease;
+    /* Transição suave ao trocar de tema */
+    transition: background 0.5s ease-in-out, color 0.5s ease-in-out;
 }
 
 .sr-only {
@@ -92,7 +161,7 @@ body {
     border: 0;
 }
 
-/* Cartão Principal com Glassmorphism */
+/* Cartão Principal */
 .cartao-aplicacao {
     background-color: var(--fundo-cartao);
     backdrop-filter: blur(16px);
@@ -104,6 +173,9 @@ body {
     border: 1px solid var(--cor-borda);
     box-shadow: var(--sombra-cartao);
     transition: var(--transicao);
+    
+    /* Animação ao carregar o painel */
+    animation: entradaSuave 0.6s cubic-bezier(0.16, 1, 0.3, 1) forwards;
 }
 
 /* Cabeçalho */
@@ -125,8 +197,13 @@ body {
     height: 48px;
     border-radius: 50%;
     object-fit: cover;
-    box-shadow: 0 4px 10px rgba(99, 102, 241, 0.2);
+    box-shadow: 0 4px 10px rgba(124, 58, 237, 0.2);
     border: 2px solid var(--fundo-item);
+    transition: var(--transicao);
+}
+
+.perfil-usuario img:hover {
+    transform: scale(1.08) rotate(3deg);
 }
 
 .perfil-usuario h2 {
@@ -164,7 +241,11 @@ body {
 .botao-iconico:hover {
     color: var(--cor-primaria);
     border-color: var(--cor-primaria);
-    transform: translateY(-2px);
+    transform: translateY(-3px) rotate(8deg);
+}
+
+.botao-iconico:active {
+    transform: translateY(0) scale(0.92);
 }
 
 /* Estatísticas */
@@ -186,7 +267,9 @@ body {
 }
 
 .card-stat:hover {
-    transform: translateY(-2px);
+    transform: translateY(-3px);
+    border-color: var(--cor-primaria);
+    animation: popEstatistica 0.3s ease;
 }
 
 .card-stat span {
@@ -234,6 +317,7 @@ input:focus, select:focus {
     outline: none;
     border-color: var(--cor-primaria);
     box-shadow: var(--sombra-foco);
+    transform: translateY(-1px);
 }
 
 .opcoes-adicionais {
@@ -257,13 +341,22 @@ input:focus, select:focus {
     display: inline-flex;
     align-items: center;
     gap: 8px;
-    box-shadow: 0 4px 12px rgba(99, 102, 241, 0.25);
+    box-shadow: 0 4px 12px rgba(124, 58, 237, 0.25);
     transition: var(--transicao);
+    animation: pulsoBrilho 3s infinite;
+}
+
+body.modo-escuro .botao-principal {
+    animation: pulsoBrilhoDark 3s infinite;
 }
 
 .botao-principal:hover {
-    transform: translateY(-2px);
-    box-shadow: 0 6px 16px rgba(99, 102, 241, 0.35);
+    transform: translateY(-2px) scale(1.02);
+    box-shadow: 0 6px 18px rgba(124, 58, 237, 0.35);
+}
+
+.botao-principal:active {
+    transform: translateY(0) scale(0.96);
 }
 
 /* Filtros e Pesquisa */
@@ -285,6 +378,11 @@ input:focus, select:focus {
     left: 14px;
     color: var(--cor-texto-secundario);
     font-size: 0.9rem;
+    transition: var(--transicao);
+}
+
+.caixa-pesquisa input:focus + i {
+    color: var(--cor-primaria);
 }
 
 .caixa-pesquisa input {
@@ -313,10 +411,15 @@ input:focus, select:focus {
     box-shadow: var(--sombra-item);
 }
 
-.filtro-btn.ativo, .filtro-btn:hover {
+.filtro-btn:hover {
+    transform: translateY(-2px);
+}
+
+.filtro-btn.ativo {
     background: var(--cor-primaria);
     color: #ffffff;
     border-color: var(--cor-primaria);
+    transform: scale(1.05);
 }
 
 /* Lista de Tarefas */
@@ -350,11 +453,15 @@ input:focus, select:focus {
     box-shadow: var(--sombra-item);
     transition: var(--transicao);
     word-break: break-word;
+    
+    /* Animação ao adicionar item */
+    animation: surgirItem 0.35s cubic-bezier(0.16, 1, 0.3, 1) forwards;
 }
 
 .item-tarefa:hover {
-    transform: translateY(-1px);
+    transform: translateY(-2px) translateX(2px);
     border-color: var(--cor-primaria);
+    box-shadow: 0 6px 16px rgba(0, 0, 0, 0.06);
 }
 
 .item-tarefa.fixada {
@@ -371,6 +478,7 @@ input:focus, select:focus {
 .texto-tarefa {
     font-weight: 500;
     font-size: 0.95rem;
+    transition: var(--transicao);
 }
 
 .meta-tarefa {
@@ -407,6 +515,7 @@ body.modo-escuro .badge-prioridade.alta { background: #991b1b; color: #fee2e2; }
     color: var(--cor-concluido);
 }
 
+/* Botões de Ação da Tarefa */
 .acoes-tarefa {
     display: flex;
     gap: 4px;
@@ -428,7 +537,15 @@ body.modo-escuro .badge-prioridade.alta { background: #991b1b; color: #fee2e2; }
     transition: var(--transicao);
 }
 
-.botao-acao:hover { background-color: var(--fundo-input); }
+.botao-acao:hover { 
+    background-color: var(--fundo-input);
+    transform: scale(1.15);
+}
+
+.botao-acao:active {
+    transform: scale(0.9);
+}
+
 .botao-acao.check:hover, .item-tarefa.concluida .botao-acao.check { color: var(--cor-sucesso); }
 .botao-acao.favorito.ativo { color: var(--cor-favorito); }
 .botao-acao.fixo.ativo { color: var(--cor-fixado); }
@@ -450,69 +567,20 @@ body.modo-escuro .badge-prioridade.alta { background: #991b1b; color: #fee2e2; }
     .estatisticas { grid-template-columns: repeat(2, 1fr); }
     .opcoes-adicionais { flex-direction: column; }
 }
-@import url('https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700&display=swap');
+/* --- ESTILOS DAS ANIMAÇÕES DO RATO --- */
 
-:root {
-    --fonte-principal: 'Plus Jakarta Sans', -apple-system, BlinkMacSystemFont, sans-serif;
-    
-    /* Nova Paleta Light: Violeta & Slate */
-    --cor-fundo: #edf2f7;
-    --fundo-gradiente: linear-gradient(135deg, #e2e8f0 0%, #edf2f7 50%, #dbeafe 100%);
-    --fundo-cartao: rgba(255, 255, 255, 0.88);
-    --fundo-item: #ffffff;
-    --fundo-input: #f8fafc;
-    
-    --cor-texto-principal: #0f172a;
-    --cor-texto-secundario: #64748b;
-    --cor-concluido: #94a3b8;
-    
-    --cor-primaria: #7c3aed;
-    --cor-primaria-gradiente: linear-gradient(135deg, #7c3aed 0%, #6d28d9 100%);
-    --cor-primaria-hover: #6d28d9;
-    --cor-primaria-foco: rgba(124, 58, 237, 0.2);
-    
-    --cor-borda: rgba(226, 232, 240, 0.9);
-    --cor-borda-suave: #f1f5f9;
-    
-    --cor-sucesso: #059669;
-    --cor-perigo: #dc2626;
-    --cor-favorito: #d97706;
-    --cor-fixado: #7c3aed;
-    
-    --sombra-cartao: 0 20px 40px -15px rgba(15, 23, 42, 0.08), 0 0 15px rgba(0, 0, 0, 0.02);
-    --sombra-item: 0 4px 6px -1px rgba(0, 0, 0, 0.03);
-    --sombra-foco: 0 0 0 4px var(--cor-primaria-foco);
-    
-    --raio-borda: 24px;
-    --raio-borda-sm: 12px;
-    --transicao: all 0.25s cubic-bezier(0.4, 0, 0.2, 1);
-}
-
-body.modo-escuro {
-    /* Nova Paleta Dark: Cyber Neon / Deep Space */
-    --cor-fundo: #0b0f19;
-    --fundo-gradiente: linear-gradient(135deg, #111827 0%, #0b0f19 60%, #0284c7 180%);
-    --fundo-cartao: rgba(17, 24, 39, 0.85);
-    --fundo-item: #1f2937;
-    --fundo-input: #111827;
-    
-    --cor-texto-principal: #f9fafb;
-    --cor-texto-secundario: #9ca3af;
-    --cor-concluido: #6b7280;
-    
-    --cor-primaria: #06b6d4;
-    --cor-primaria-gradiente: linear-gradient(135deg, #06b6d4 0%, #0891b2 100%);
-    --cor-primaria-hover: #0891b2;
-    --cor-primaria-foco: rgba(6, 182, 212, 0.25);
-    
-    --cor-borda: rgba(55, 65, 81, 0.7);
-    --cor-borda-suave: rgba(31, 41, 55, 0.6);
-    
-    --cor-sucesso: #10b981;
-    --cor-perigo: #f87171;
-    --cor-favorito: #fbbf24;
-    --cor-fixado: #06b6d4;
-    
-    --sombra-cartao: 0 25px 50px -12px rgba(0, 0, 0, 0.7);
-    --sombra-item: 0 4px 12px rgba(0, 0, 0, 0.3);
+/* Brilho Flutuante que segue o Rato */
+.brilho-cursor {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 350px;
+    height: 350px;
+    background: radial-gradient(circle, var(--cor-primaria-foco) 0%, rgba(0, 0, 0, 0) 70%);
+    border-radius: 50%;
+    pointer-events: none;
+    transform: translate(-50%, -50%);
+    z-index: 9999;
+    transition: opacity 0.3s ease;
+    mix-blend-mode: screen;
 }
