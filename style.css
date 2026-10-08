@@ -567,20 +567,121 @@ body.modo-escuro .badge-prioridade.alta { background: #991b1b; color: #fee2e2; }
     .estatisticas { grid-template-columns: repeat(2, 1fr); }
     .opcoes-adicionais { flex-direction: column; }
 }
-/* --- ESTILOS DAS ANIMAÇÕES DO RATO --- */
+.botao-novidades {
+    position: fixed;
+    top: 15px;
+    left: 15px;
+    background-color: #4f46e5;
+    color: #ffffff;
+    border: none;
+    padding: 8px 14px;
+    border-radius: 20px;
+    font-weight: bold;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    gap: 6px;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.15);
+    z-index: 1000;
+    transition: transform 0.2s, background-color 0.2s;
+}
 
-/* Brilho Flutuante que segue o Rato */
-.brilho-cursor {
+.botao-novidades:hover {
+    background-color: #4338ca;
+    transform: scale(1.05);
+}
+
+.badge-novo {
+    background-color: #ef4444;
+    color: white;
+    font-size: 0.7rem;
+    padding: 2px 6px;
+    border-radius: 10px;
+    text-transform: uppercase;
+}
+
+.modal-container {
+    display: none;
     position: fixed;
     top: 0;
     left: 0;
-    width: 350px;
-    height: 350px;
-    background: radial-gradient(circle, var(--cor-primaria-foco) 0%, rgba(0, 0, 0, 0) 70%);
-    border-radius: 50%;
-    pointer-events: none;
-    transform: translate(-50%, -50%);
-    z-index: 9999;
-    transition: opacity 0.3s ease;
-    mix-blend-mode: screen;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.5);
+    backdrop-filter: blur(3px);
+    z-index: 2000;
+    justify-content: center;
+    align-items: center;
+}
+
+.modal-container.ativo {
+    display: flex;
+}
+
+.modal-conteudo {
+    background-color: #ffffff;
+    padding: 24px;
+    border-radius: 12px;
+    width: 90%;
+    max-width: 420px;
+    position: relative;
+    box-shadow: 0 10px 25px rgba(0, 0, 0, 0.2);
+    animation: surgimento 0.3s ease-out;
+}
+
+.modo-escuro .modal-conteudo {
+    background-color: #1e1e2f;
+    color: #ffffff;
+}
+
+@keyframes surgimento {
+    from { opacity: 0; transform: translateY(-20px); }
+    to { opacity: 1; transform: translateY(0); }
+}
+
+.fechar-modal {
+    position: absolute;
+    top: 12px;
+    right: 16px;
+    background: none;
+    border: none;
+    font-size: 1.5rem;
+    cursor: pointer;
+    color: #888;
+}
+
+.lista-novidades {
+    list-style: none;
+    padding: 0;
+    margin: 16px 0;
+}
+
+.lista-novidades li {
+    margin-bottom: 12px;
+}
+
+.lista-novidades p {
+    font-size: 0.9rem;
+    margin: 4px 0 0 0;
+    color: #666;
+}
+
+.modo-escuro .lista-novidades p {
+    color: #aaa;
+}
+
+.botao-entendi {
+    width: 100%;
+    padding: 10px;
+    background-color: #4f46e5;
+    color: white;
+    border: none;
+    border-radius: 8px;
+    font-weight: bold;
+    cursor: pointer;
+    margin-top: 8px;
+}
+
+.botao-entendi:hover {
+    background-color: #4338ca;
 }
