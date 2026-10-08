@@ -1,4 +1,3 @@
-// Elementos do DOM
 const botaoTema = document.getElementById('botao-tema');
 const botaoAtualizar = document.getElementById('botao-atualizar');
 const formularioTarefa = document.getElementById('formulario-tarefa');
@@ -13,13 +12,11 @@ const botoesFiltro = document.getElementById('botoes-filtro');
 const listaTarefas = document.getElementById('lista-tarefas');
 const contadorTarefas = document.getElementById('contador-tarefas');
 
-// Estatísticas
 const statTotal = document.getElementById('stat-total');
 const statPendentes = document.getElementById('stat-pendentes');
 const statConcluidas = document.getElementById('stat-concluidas');
 const statFavoritas = document.getElementById('stat-favoritas');
 
-// Estado da Aplicação
 let tarefas = carregarDados('minhas_tarefas_v2', []);
 let filtroAtual = 'todas';
 let termoPesquisa = '';
@@ -30,7 +27,6 @@ document.addEventListener('DOMContentLoaded', () => {
     configurarEventos();
 });
 
-// Utilitários LocalStorage
 function carregarDados(chave, padrao) {
     try {
         const dados = localStorage.getItem(chave);
@@ -49,7 +45,6 @@ function salvarDados(chave, valor) {
     }
 }
 
-// Configuração de Eventos
 function configurarEventos() {
     botaoTema?.addEventListener('click', alternarTema);
     botaoAtualizar?.addEventListener('click', () => {
@@ -75,7 +70,6 @@ function configurarEventos() {
     listaTarefas?.addEventListener('click', manipularAcoesLista);
 }
 
-// Lógica CRUD & Ações
 function salvarTarefa(e) {
     e.preventDefault();
     const texto = campoTarefa.value.trim();
@@ -84,7 +78,6 @@ function salvarTarefa(e) {
     const id = campoTarefaId.value;
 
     if (id) {
-        // Editar
         tarefas = tarefas.map(t => t.id === Number(id) ? {
             ...t,
             texto,
@@ -151,7 +144,6 @@ function salvarERenderizar() {
     renderizar();
 }
 
-// Renderização & Filtros
 function renderizar() {
     let filtradas = tarefas.filter(t => {
         const atendePesquisa = t.texto.toLowerCase().includes(termoPesquisa);
@@ -164,7 +156,6 @@ function renderizar() {
         return true;
     });
 
-    // Ordenação: Fixadas primeiro
     filtradas.sort((a, b) => (b.fixada ? 1 : 0) - (a.fixada ? 1 : 0));
 
     listaTarefas.innerHTML = '';
@@ -216,7 +207,6 @@ function atualizarEstatisticas() {
     contadorTarefas.textContent = total === 0 ? 'Nenhuma tarefa' : `${concluidas} de ${total} tarefas concluídas`;
 }
 
-// Tema
 function alternarTema() {
     const eModoEscuro = document.body.classList.toggle('modo-escuro');
     salvarDados('modo_escuro_v2', eModoEscuro);
@@ -245,3 +235,26 @@ function formatarData(dataStr) {
     const [ano, mes, dia] = dataStr.split('-');
     return `${dia}/${mes}/${ano}`;
 }
+const botaoNovidades = document.getElementById("botao-novidades");
+const modalNovidades = document.getElementById("modal-novidades");
+const fecharModal = document.getElementById("fechar-modal");
+const botaoEntendi = document.getElementById("entendi-novidades");
+
+function abrirNovidades() {
+    modalNovidades.classList.add("ativo");
+}
+
+function fecharNovidades() {
+    modalNovidades.classList.remove("ativo");
+}
+
+if (botaoNovidades) botaoNovidades.addEventListener("click", abrirNovidades);
+if (fecharModal) fecharModal.addEventListener("click", fecharNovidades);
+if (botaoEntendi) botaoEntendi.addEventListener("click", fecharNovidades);
+
+window.addEventListener("click", (e) => {
+    if (e.target === modalNovidades) {
+        fecharNovidades();
+    }
+});
+
