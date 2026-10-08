@@ -21,7 +21,7 @@
             <div class="perfil-usuario">
                 <img src="IMG_1149.jpg" alt="Foto de Perfil" id="foto-perfil">
                 <div>
-                    <h2>Minhas Tarefas</h2>
+                    <h2>Minhas Tarefas ✨</h2>
                     <p>Organize o seu dia</p>
                 </div>
             </div>
@@ -35,7 +35,6 @@
             </div>
         </header>
 
-        <!-- Estatísticas -->
         <section class="estatisticas">
             <div class="card-stat">
                 <span id="stat-total">0</span>
@@ -55,7 +54,6 @@
             </div>
         </section>
 
-        <!-- Formulário de Criação e Edição -->
         <form id="formulario-tarefa" class="formulario-tarefa">
             <input type="hidden" id="tarefa-id">
             
@@ -78,7 +76,6 @@
             </div>
         </form>
 
-        <!-- Pesquisa e Filtros -->
         <section class="secao-filtros">
             <div class="caixa-pesquisa">
                 <i class="fa-solid fa-magnifying-glass" aria-hidden="true"></i>
@@ -94,10 +91,9 @@
             </div>
         </section>
 
-        <!-- Lista de Tarefas -->
         <section aria-label="Lista de Tarefas">
             <ul id="lista-tarefas" class="lista-tarefas" aria-live="polite">
-                <!-- Conteúdo inserido via JS -->
+          
             </ul>
         </section>
 
@@ -108,4 +104,27 @@
 
     <script src="script.js" defer></script>
 </body>
+
+<button id="botao-novidades" class="botao-novidades" title="Ver novidades">
+    <i class="fa-solid fa-sparkles"></i> Novidades
+    <span class="badge-novo">Novo</span>
+</button>
+
+<div id="modal-novidades" class="modal-container">
+    <div class="modal-conteudo">
+        <button id="fechar-modal" class="fechar-modal">&times;</button>
+        <h2>✨ O que há de novo!</h2>
+        <ul class="lista-novidades">
+            <li>
+                <strong>📌 Favoritar tarefas:</strong>
+                <p>Agora você pode favoritar tarefas clicando na estrela para fixá-las no topo da sua lista.</p>
+            </li>
+            <li>
+                <strong>📜 Histórico de tarefas:</strong>
+                <p>Tarefas excluídas vão para a aba de histórico. De lá, você pode restaurá-las ou apagá-las de vez.</p>
+            </li>
+        </ul>
+        <button id="entendi-novidades" class="botao-entendi">Entendi!</button>
+    </div>
+</div>
 </html>
